@@ -6,7 +6,7 @@ from django.contrib.auth.models import BaseUserManager
 
 
 # Create your models here.
-class UserProfileManager(object):
+class UserProfileManager(BaseUserManager):
     """helps django work with custom user model ."""
 
     def create_user(self,email,name,password=None):
@@ -21,7 +21,9 @@ class UserProfileManager(object):
         user.set_password(password)
         user.save(using=self._db)
 
+
         return user
+
 
 
     def create_superuser(self, email, name, password):
